@@ -1,0 +1,37 @@
+<!--form used to get the values required to conver from one currency to another-->
+<form class="container bg-dark text-white mt-5" [formGroup]="converterForm" (ngSubmit)="convert()">
+  <div class="form-row p-3">
+    <div class="col">
+      <label for="from">From</label>
+      <select formControlName="from" class="form-control form-control-lg">
+        <option *ngFor="let currency of currencyList; index as i" [ngValue]="currency">
+          {{ currency }}
+        </option>
+      </select>
+    </div>
+    <div class="col">
+      <label for="to">To</label>
+      <select formControlName="to" class="form-control form-control-lg">
+        <option *ngFor="let currency of currencyList; index as i" [ngValue]="currency">
+          {{ currency }}
+        </option>
+      </select>
+    </div>
+    <div class="col-md-5">
+      <label>Amount</label>
+      <input formControlName="amount" type="number" class="form-control form-control-lg" min="1" name="amount">
+    </div>
+    <div class="col-md-1">
+      <button type="submit" class="btn btn-success btn-lg btn-block mt-4"><em
+          class="fa fa-arrow-circle-right fa-2x"></em></button>
+    </div>
+  </div>
+  <div *ngIf="converted" class="contianer">
+    <h5 class="text-center text-wrap">{{description}}</h5>
+    <h1 class="text-center text-wrap">{{resultValue}}</h1>
+    <h5 class="text-center text-wrap">{{exchangeRate}}</h5>
+  </div>
+</form>
+
+<!--component that displays based on from input in the form-->
+<app-comparator [from]="comparatorInput" [hidden]="!converted" ></app-comparator>

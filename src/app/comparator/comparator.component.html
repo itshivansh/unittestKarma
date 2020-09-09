@@ -1,0 +1,18 @@
+<!-- Section to display a table with exchange rates of base currency selected -->
+<section class="container bg-dark text-white">
+  <h2>Exchange Rates Of {{from}}:</h2>
+  <table class="table table-dark">
+    <thead>
+      <tr>
+        <th class="w-50 text-center" scope="col">Currency</th>
+        <th class="w-50 text-center" scope="col">Rate</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let currency of exchangeRates">
+        <td class="text-center">{{currency.key}}</td>
+        <td class="text-center">{{currency.value}}</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
